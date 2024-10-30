@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة القوانين</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #686561; /* برتقالي */
+            color: #fff; /* نص أبيض */
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #f56f01; /* أسود */
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+            color: #000000; /* برتقالي */
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #000000; /* برتقالي */
+            transition: color 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            color: #fff; /* نص أبيض عند التمرير */
+        }
+
+        .content {
+            padding: 20px;
+            flex: 1;
+            background-color: #180e02; /* رمادي */
+            border-radius: 10px; /* زوايا مستديرة */
+            margin: 20px; /* إضافة مسافة بين المحتوى والحدود */
+        }
+
+        .law {
+            margin-bottom: 40px;
+        }
+
+        .law h2 {
+            color: #ca6f00; /* برتقالي */
+        }
+
+        .btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #000000; /* أسود */
+            color: #FF8C00; /* برتقالي */
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 18px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #FF8C00; /* برتقالي */
+            color: #441919; /* أسود */
+        }
+    </style>
+</head>
+<body>
+    <button class="btn" onclick="location.href='http://127.0.0.1:5500/index.html'">العودة إلى الصفحة الرئيسية</button>
+    <div class="container">
+        <nav class="sidebar">
+            <h2>الفهرس</h2>
+            <ul>
+                <li><a href="#law1">القوانين العامة</a></li>
+                <li><a href="#law2">قوانين  المناطق الامنه</a></li>
+                <li><a href="#law3">قوانين الاجرام</a></li>
+                <li><a href="#law4">قوانين المتجر</a></li>
+            
+            </ul>
+        </nav>
+        <main class="content">
+          
+            <section id="law1" class="law">
+                <h2>القوانين العامة</h2>
+                <p></p>
+            </section>
+            <section id="law2" class="law">
+                <h2>قوانين  المناطق الامنه</h2>
+                <p></p>
+            </section>
+            <section id="law3" class="law">
+                <h2>قوانين الاجرام</h2>
+                <p></p>
+            </section>
+            <section id="law4" class="law">
+                <h2>قوانين المتجر</h2>
+                <p></p>
+            </section>
+            <section id="law5" class="law">
+           
+            </section>
+        </main>
+    </div>
+    <script>
+        // إضافة تأثير الانتقال عند الضغط على الفهرس
+        document.querySelectorAll('.sidebar a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

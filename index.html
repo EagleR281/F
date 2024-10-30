@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final List</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+       
+        
+
+        .header {
+            width: 100%;
+            background-color: rgba(27, 26, 24, 0.986);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header img {
+            height: 40px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            margin-top: 50px;
+            z-index: 2;
+        }
+
+        .server-name {
+            font-size: 44px;
+            position: relative;
+            left: 481px;
+            margin-bottom: 23px;
+            margin-top: 212px;
+            text-align: center;
+        }
+        
+        .dodo-top {
+            font-size: 20px;
+            position: relative;
+            left: 481px;
+            margin-bottom: 23px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .server-description {
+            font-size: 18px;
+            direction: rtl;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .server-button {
+            padding: 10px 20px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin: 0 20px;
+            font-size: 16px;
+        }
+
+        .action-button {
+            margin-top: 0px;
+            padding: 10px 23px;
+            background-color: #FFA500;
+            color: white;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            left: 491px;
+            margin-top: 11px;
+            font-size: 19px;
+            border-radius: 10px;
+        }
+
+        .team-section {
+            margin-top: 225px;
+            text-align: center;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1.2s ease, transform 1.2s ease;
+        }
+
+        .team-section.visible {
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+
+        .team-member {
+            display: inline-block;
+            margin: 19px;
+            text-align: center;
+            border: 1px solid rgba(255, 87, 34, 0.8);
+            padding: 53px;
+            border-radius: 43px;
+            background-color: rgb(0, 0, 0);
+            box-shadow: 0px 0px 15px rgb(182, 105, 4);
+            transition: background-color 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            width: 200px;
+            height: 300px;
+            opacity: 0;
+            transform: translateY(50px);/
+            transition: opacity 1.2s ease, transform 1.2s ease; 
+        }
+
+        .team-member.visible {
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+
+        .team-member img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -10%);
+            transition: transform 0.9s;
+        }
+
+        .team-member-name {
+            font-size: 18px;
+            margin: 10px 0;
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .rank {
+            margin-top: 5px;
+            font-size: 16px;
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .overlay {
+            position: absolute;
+            color: white;
+            font-size: 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            text-align: center;
+        }
+
+        .team-member:hover img {
+            transform: translate(63%, -100px);
+        }
+
+        .team-member:hover .overlay {
+            opacity: 1;
+        }
+
+        span {
+            color: rgb(201, 117, 8);
+        }
+
+        .widget {
+            margin-top: 220px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.8);
+            box-shadow: 0px 0px 30px rgb(5, 104, 134);
+            border-radius: 35px;
+            text-align: center;
+            color: rgb(201, 117, 8);
+            opacity: 0; 
+            transform: translateY(50px); 
+            transition: opacity 1.2s ease, transform 1.2s ease; 
+        }
+
+        .widget.visible {
+            opacity: 1;
+            transform: translateY(0); 
+        }
+
+        .widget iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 8px;
+        }
+        .server-button {
+    background: linear-gradient(90deg, #af5113, #af5113);
+    color: #ffffff; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 30px;
+    cursor: pointer; 
+    font-size: 14px; 
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+}
+
+
+.server-button:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.8);
+}
+
+
+.server-button:active {
+    opacity: 0.8; 
+}
+
+
+.server-button:focus {
+    outline: none; 
+    box-shadow: 0 0 0 2px rgba(255, 165, 0, 1);
+}
+
+
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+    75% { transform: translateX(-3px); }
+    100% { transform: translateX(0); }
+}
+.action-button {
+    background-color: #af5113;
+    color: #ffffff; 
+    padding: 12px 84px; 
+    border: none; 
+    border-radius: 50px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    font-weight: bold; 
+    position: relative; 
+    overflow: hidden; 
+    transition: color 0.4s, transform 0.4s;
+}
+
+.action-button:hover {
+    color: #000000; 
+    transform: translateY(-8px); 
+}
+
+
+.action-button:active {
+    transform: translateY(2px);
+}
+
+.action-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%; 
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+    border-radius: 50%;
+    transition: transform 0.5s;
+    z-index: 0; 
+    transform: translate(-50%, -50%) scale(0); 
+}
+
+
+.action-button:hover::before {
+    transform: translate(-50%, -50%) scale(1); /
+}
+
+
+.action-button span {
+    position: relative; 
+    z-index: 1;
+}
+
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="cursor"></div>
+    
+    <div class="header">
+        <img src="./images/fl_1.png" alt="Logo" />
+        <div class="button-container">
+            <button class="server-button">Houm</button>
+            <button class="server-button">Rules</button>
+            <button class="server-button">Store</button>
+        </div>
+        <img src="./images/download (2) (1).png" alt="Discord" class="discord-icon" onclick="window.location.href='https://discord.gg/flp';" />
+    </div>
+
+    <div class="content">
+        <h1 class="server-name">Final List <span>CFW</span></h1>
+        <h3 class="dodo-top">Join our server and enjoy a realistic and challenging gaming  <br> experience!,Whether you like action, or you like a quiet life, we provide  <br> you with everything: continuous events, diverse roles, and <br> distinctive interactive <br> activities. Everyone is here to welcome you and live with <br> you enthusiastically. </h3>
+        <button class="action-button" onclick="window.location.href='رابط_الوجهة_المرغوبة';">Join now!</button>
+    </div>
+
+    <div class="team-section">
+        <h2>Get to know our team at a glance</h2>
+        <div class="team-member">
+            <img src="./images/download.jpeg" alt="Member 1" />
+            <div class="overlay">مرحبًا، أنا خالد، مبرمج السيرفر ومطور بوتات الديسكورد، أسعى دائمًا لصنع بيئة لعب تناسبكم مع خصائص متقدمة.</div>
+            <div class="team-member-name">khaled alotaibi</div>
+            <div class="rank">Ceo</div>
+        </div>
+        <div class="team-member">
+            <img src="./images/logo.png" alt="Member 2" />
+            <div class="overlay">مرحبا, انا هشام, مسؤول المتجر ولدي خبره عاليه في بيع المنتجات الخاصه بالسيرفر’ اسعى دوما لتوفير خدمات تليق بكم,</div>
+            <div class="team-member-name">Figo</div>
+            <div class="rank">Founder</div>
+        </div>
+        <div class="team-member">
+            <img src="./images/8c8d76d547c2c94896b17c09c8f1f4fd.jpg" alt="Member 3" />
+            <div class="overlay">مرحبا, انا عبدالعزيز, مالك سيرفر فاينل ليست, اسعى دوما لصنع بيئة لعب نظيفه وخاليه من التخريب,</div>
+            <div class="team-member-name">3z</div>
+            <div class="rank">Owner</div>
+        </div>
+        <div class="team-member">
+            <img src="./images/IMG_5218.jpg" alt="Member 4" />
+            <div class="overlay">مرحبًا، أنا عبدالله مصمم ثلاثي الابعاد. أسعى لإضفاء لمسة جمالية على السيرفر الخاص بنا.</div>
+            <div class="team-member-name">Max</div>
+            <div class="rank">Head Admin</div>
+        </div>
+        <div class="team-member">
+            <img src="./images/2024-08-13_225106.png" alt="Member 5" />
+            <div class="overlay">مرحبًا، أنا محمد لدي خبره.عاليه في صناعة المحتوى, وانا مسؤول قسم صانعي المحتوى,</div>
+            <div class="team-member-name">Abu Daham</div>
+            <div class="rank">Founder</div>
+        </div>
+    </div>
+
+    <div class="widget">
+        <iframe src="https://discord.com/widget?id=1286071876719874188" width="350" height="500" allowfullscreen></iframe>
+    </div>
+    
+
+    <script>
+ 
+        const cursor = document.querySelector('.cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+
+        const teamMembers = document.querySelectorAll('.team-member');
+        const teamSection = document.querySelector('.team-section');
+        const widget = document.querySelector('.widget');
+
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible'); 
+                } else {
+                    entry.target.classList.remove('visible'); 
+                }
+            });
+        }, options);
+
+        teamMembers.forEach(member => {
+            observer.observe(member);
+        });
+
+        observer.observe(teamSection);
+        observer.observe(widget);
+    </script>
+</body>
+</html>
